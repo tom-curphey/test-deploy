@@ -4,14 +4,17 @@
   "description": "Combine Front & Backend devlopment environments using the standards that you want",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
     "server": "nodemon --exec babel-node index.js",
     "client-install": "cd client && npm install",
     "client": "cd client && npm start",
     "dev": "npm run server & npm run client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/index.js"
   },
-  "author": "Tom Curphey",
+  "author": "Theroom Curphey",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
