@@ -29,7 +29,7 @@ app.use('/api/item', itemRouter);
 // app.use('/api/list', listRouter);
 
 // Serve static assets if in production
-if (process.env.NOD_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   // Set a static folder
   app.use(express.static('client/build'));
   // Any other requests loads the index.html file
